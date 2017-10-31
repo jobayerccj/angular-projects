@@ -8,8 +8,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user: firebase.User;
-
+  
   constructor(private afauth: AngularFireAuth) { 
     
   }
