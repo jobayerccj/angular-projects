@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor = "let student of students_list">
+    {{ student.name }} <button (click)="deleteUser(student)">x</button>
+  </li>
+</ul>
