@@ -11,8 +11,7 @@ export class LoginComponent implements OnInit {
   user: firebase.User;
 
   constructor(private afauth: AngularFireAuth) { 
-    //afauth.authState.subscribe(authUser => this.user = authUser)
-    //afauth.authState.subscribe(x => console.log(x));
+    
   }
 
   ngOnInit() {

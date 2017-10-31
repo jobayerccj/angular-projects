@@ -11,15 +11,17 @@ export class BsNavbarComponent implements OnInit {
   user: firebase.User;
 
   constructor(private afauth: AngularFireAuth) {
-    
-    afauth.authState.subscribe(authUser => this.user = authUser);
-    console.log(this.user);
+    afauth.authState.subscribe(authUser => console.log(this.user = authUser));
   }
 
   ngOnInit() {
+    
   }
 
   logout(){
-    //this.afauth.auth.signOut();
+    console.log("Before Logout: ");
+    console.log(this.user);
+    this.afauth.auth.signOut();
+    
   }
 }
