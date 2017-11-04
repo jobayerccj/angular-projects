@@ -10,19 +10,46 @@
         <a class="nav-link" routerLink='/'>Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink='/shopping-cart'>Shopping Cart</a>
+        <a class="nav-link" routerLink='/shopping-cart'>
+          Shopping Cart
+          <span class="badge badge-warning badge-pill">{{ shoppingCartItemCount }}</span>
+        </a>
       </li>
-      <li *ngIf="!(auth.user$ | async)" class="nav-item">
+      <!--<li *ngIf="!(auth.user$ | async)" class="nav-item">-->
+      <li *ngIf="!appUser" class="nav-item">
         <a class="nav-link" routerLink='/login'>Login</a>
       </li>
       
-      <li ngbDropdown class="nav-item dropdown" *ngIf="auth.user$ | async as user">
-        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.displayName }}</a>
+      <!--<li ngbDropdown class="nav-item dropdown" *ngIf="auth.user$ | async as user">-->
+      <li ngbDropdown class="nav-item dropdown" *ngIf="appUser">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ appUser.name }}</a>
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" routerLink="/my-orders">My Orders</a>
-          <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
-          <a class="dropdown-item" routerLink="/admin/products">Manage Products</a>
+          <a class="dropdown-item" routerLink="/check-out">Check out</a>
+
+          <a class="dropdown-item" *ngIf="appUser.isAdmin" routerLink="/admin/orders">Manage Orders</a>
+          <a class="dropdown-item" *ngIf="appUser.isAdmin" routerLink="/admin/products">Manage Products</a>
           <a class="dropdown-item" (click)="logout()">Logout</a>
+        </div>
+      </li>
+
+      <li ngbDropdown class="nav-item dropdown" >
+        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Other</a>
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" routerLink="/google-maps">Google Maps</a>
+          <a class="dropdown-item"  routerLink="/drag">Drag App</a>
+          <a class="dropdown-item"  routerLink="/chart">Chart App</a>
+          <a class="dropdown-item"  routerLink="/share">Share App</a>
+
+          <a class="dropdown-item" routerLink="/check-out">Weather App</a>
+          <a class="dropdown-item"  routerLink="/admin/orders">Upload File</a>
+          <a class="dropdown-item"  routerLink="/admin/products">Translate App</a>
+          
+          <a class="dropdown-item"  routerLink="/timer">Timer</a>
+          <a class="dropdown-item"  routerLink="/admin/products">Leaflet App</a>
+          <a class="dropdown-item"  routerLink="/admin/products">Lastfm</a>
+          <a class="dropdown-item"  routerLink="/admin/products">To DO App</a>
+          <a class="dropdown-item"  routerLink="/admin/products">Notepad App</a>
         </div>
       </li>
     </ul>

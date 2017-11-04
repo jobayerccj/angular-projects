@@ -1,0 +1,11 @@
+<div class="card" style="width: 20rem;">
+  <img class="card-img-top" [src]="product.imageUrl" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">{{ product.title }}</h4>
+    <p class="card-text">{{ product.price }} $</p>
+    <button (click)="addToCart(product)" class="btn btn-primary">+</button>
+    
+    <button (click)="removeFromCart(product)" class="btn btn-primary">-</button>
+    <div>{{ getQuantity() }}</div>
+  </div>
+</div>

@@ -6,8 +6,21 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+
+import { AgmCoreModule } from '@agm/core';
+import { ChartModule } from 'angular2-chartjs';
+import { AngularDraggableModule } from 'angular2-draggable';
+import {ShareModule} from 'ngxshare/share.module';
+
 import { AuthService } from './../app/auth.service';
-//import 
+import { AuthGuardService } from './../app/auth-guard.service';
+import { UserService } from './../app/user.service';
+import { AdminauthguardService } from './../app/adminauthguard.service';
+import { CategoryService } from './../app/category.service';
+import { FormsModule } from '@angular/forms';
+import { ProductService } from './../app/product.service';
+import { ShoppingCartService } from './../app/shopping-cart.service';
+import { OrderService } from './../app/order.service';
 
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
@@ -20,6 +33,13 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { GoogleMapsComponent } from './google-maps/google-maps.component';
+import { TimerComponent } from './timer/timer.component';
+import { ChartComponent } from './chart/chart.component';
+import { DragComponent } from './drag/drag.component';
+import { ShareComponent } from './share/share.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -34,10 +54,23 @@ import { LoginComponent } from './login/login.component';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    
+    ProductFormComponent,
+    GoogleMapsComponent,
+    TimerComponent,
+    ChartComponent,
+    DragComponent,
+    ShareComponent,
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,
+    ShareModule,
+    AngularDraggableModule,
+    ChartModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCIcunV0S9znpFyGBugsWSxKcqnuj5OwOY'
+    }),
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
@@ -46,17 +79,44 @@ import { LoginComponent } from './login/login.component';
       {path:'', component:HomeComponent},
       {path:'products', component:ProductsComponent},
       {path:'shopping-cart', component:ShoppingCartComponent},
-      {path:'check-out', component:CheckOutComponent},
-      {path:'order-successful', component:OrderSuccessfulComponent},
+      {path:'check-out', component:CheckOutComponent, canActivate:[AuthGuardService]},
+      {path:'order-success', component:OrderSuccessfulComponent, canActivate:[AuthGuardService]},
       {path:'login', component:LoginComponent},
-      {path:'my-orders', component:MyOrdersComponent},
+      {path:'my-orders', component:MyOrdersComponent, canActivate:[AuthGuardService]},
 
-      {path:'admin/products', component:AdminProductsComponent},
-      {path:'admin/orders', component:AdminOrdersComponent},
+      {
+        path:'admin/products', 
+        component:AdminProductsComponent, 
+        canActivate:[AuthGuardService, AdminauthguardService]
+      },
+      {
+        path:'admin/products/new', 
+        component:ProductFormComponent, 
+        canActivate:[AuthGuardService, AdminauthguardService]
+      },
+      {
+        path:'admin/orders', 
+        component:AdminOrdersComponent, 
+        canActivate:[AuthGuardService, AdminauthguardService]
+      },
+
+      //other
+      {path:'google-maps', component:GoogleMapsComponent},
+      {path:'timer', component: TimerComponent},
+      {path:'chart', component: ChartComponent},
+      {path:'drag', component: DragComponent},
+      {path:'share', component: ShareComponent},
     ])
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuardService,
+    UserService,
+    AdminauthguardService,
+    CategoryService,
+    ProductService,
+    ShoppingCartService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })
