@@ -22,6 +22,7 @@ export class CheckOutComponent implements OnInit {
   placeOrder(Order){
     this.orderService.create(Order);
     this.shoppingCartService.clearCart();
+    
     this.router.navigateByUrl('order-success');
     console.log(Order);
   }

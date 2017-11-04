@@ -60,6 +60,7 @@ export class ShoppingCartService {
 
   async clearCart(){
     let cartId = await this.getOrCreateCart();
-    this.db.object('/shopping-cart/' + cartId + '/items/').remove();
+    this.db.object('/shopping-cart/' + cartId + '/items').remove();
+    //localStorage.removeItem('cartId');
   }
 }
