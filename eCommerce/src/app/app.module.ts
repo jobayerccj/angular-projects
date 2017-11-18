@@ -7,6 +7,12 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
+import {MatInputModule} from '@angular/material';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { AgmCoreModule } from '@agm/core';
 import { ChartModule } from 'angular2-chartjs';
@@ -20,7 +26,6 @@ import { AuthGuardService } from './../app/auth-guard.service';
 import { UserService } from './../app/user.service';
 import { AdminauthguardService } from './../app/adminauthguard.service';
 import { CategoryService } from './../app/category.service';
-import { FormsModule } from '@angular/forms';
 import { ProductService } from './../app/product.service';
 import { ShoppingCartService } from './../app/shopping-cart.service';
 import { OrderService } from './../app/order.service';
@@ -46,6 +51,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { WeatherComponent } from './weather/weather.component';
 import { LastfmComponent } from './lastfm/lastfm.component';
 import { LeafletComponent } from './leaflet/leaflet.component';
+import { MaterialComponent } from './material/material.component';
 
 @NgModule({
   declarations: [
@@ -70,10 +76,14 @@ import { LeafletComponent } from './leaflet/leaflet.component';
     WeatherComponent,
     LastfmComponent,
     LeafletComponent,
+    MaterialComponent,
   ],
   imports: [
     BrowserModule,
-
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
     LeafletModule.forRoot(),
     ShareModule,
     HttpModule,
@@ -83,6 +93,7 @@ import { LeafletComponent } from './leaflet/leaflet.component';
       apiKey: 'AIzaSyCIcunV0S9znpFyGBugsWSxKcqnuj5OwOY'
     }),
     FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
@@ -121,6 +132,7 @@ import { LeafletComponent } from './leaflet/leaflet.component';
       {path:'weather', component: WeatherComponent},
       {path:'lastfm', component: LastfmComponent},
       {path:'leaflet', component: LeafletComponent},
+      {path:'material', component: MaterialComponent},
     ])
   ],
   providers: [
