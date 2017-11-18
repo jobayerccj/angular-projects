@@ -9,6 +9,7 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./student-list.component.css']
 })
 export class StudentListComponent implements OnInit {
+
   students_list: any[];
   constructor(private dataService:DataService) {
     this.dataService.getStudentsInfo().subscribe((students) => {
@@ -17,14 +18,16 @@ export class StudentListComponent implements OnInit {
       //console.log(this.students_list);
     });
 
-    this.dataService.AddStudentInfo();
+    
   }
 
   ngOnInit() {
 
   }
 
-
+  addNewStudent(){
+    this.dataService.AddStudentInfo();
+  }
 
   deleteUser(student){
     alert('Are you sure?');

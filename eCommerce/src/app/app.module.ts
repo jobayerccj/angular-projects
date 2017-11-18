@@ -6,11 +6,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { HttpModule } from '@angular/http';
 
 import { AgmCoreModule } from '@agm/core';
 import { ChartModule } from 'angular2-chartjs';
 import { AngularDraggableModule } from 'angular2-draggable';
-import {ShareModule} from 'ngxshare/share.module';
+import { ShareModule } from 'ngxshare/share.module';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { SimpleTimer } from 'ng2-simple-timer';
 
 import { AuthService } from './../app/auth.service';
 import { AuthGuardService } from './../app/auth-guard.service';
@@ -40,6 +43,9 @@ import { ChartComponent } from './chart/chart.component';
 import { DragComponent } from './drag/drag.component';
 import { ShareComponent } from './share/share.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { WeatherComponent } from './weather/weather.component';
+import { LastfmComponent } from './lastfm/lastfm.component';
+import { LeafletComponent } from './leaflet/leaflet.component';
 
 @NgModule({
   declarations: [
@@ -61,10 +67,16 @@ import { ProductCardComponent } from './product-card/product-card.component';
     DragComponent,
     ShareComponent,
     ProductCardComponent,
+    WeatherComponent,
+    LastfmComponent,
+    LeafletComponent,
   ],
   imports: [
     BrowserModule,
+
+    LeafletModule.forRoot(),
     ShareModule,
+    HttpModule,
     AngularDraggableModule,
     ChartModule,
     AgmCoreModule.forRoot({
@@ -106,6 +118,9 @@ import { ProductCardComponent } from './product-card/product-card.component';
       {path:'chart', component: ChartComponent},
       {path:'drag', component: DragComponent},
       {path:'share', component: ShareComponent},
+      {path:'weather', component: WeatherComponent},
+      {path:'lastfm', component: LastfmComponent},
+      {path:'leaflet', component: LeafletComponent},
     ])
   ],
   providers: [
@@ -116,7 +131,8 @@ import { ProductCardComponent } from './product-card/product-card.component';
     CategoryService,
     ProductService,
     ShoppingCartService,
-    OrderService
+    OrderService,
+    SimpleTimer
   ],
   bootstrap: [AppComponent]
 })

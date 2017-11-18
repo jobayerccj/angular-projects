@@ -1,0 +1,5 @@
+
+Application name	Talha Training
+API key	13b205493b27649e02a0c79c5afcf588
+Shared secret	e2b613545878919f7d7e519778f0fc84
+Registered to	jobayercse
