@@ -14,6 +14,7 @@ export class MaterialComponent implements OnInit {
   options = ["1","2","3"];
   constructor() { }
   filteredOptions: Observable<string[]>;
+  
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges

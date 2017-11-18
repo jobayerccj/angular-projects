@@ -52,6 +52,7 @@ import { WeatherComponent } from './weather/weather.component';
 import { LastfmComponent } from './lastfm/lastfm.component';
 import { LeafletComponent } from './leaflet/leaflet.component';
 import { MaterialComponent } from './material/material.component';
+import { TranslateComponent } from './translate/translate.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { MaterialComponent } from './material/material.component';
     LastfmComponent,
     LeafletComponent,
     MaterialComponent,
+    TranslateComponent,
   ],
   imports: [
     BrowserModule,
@@ -133,6 +135,7 @@ import { MaterialComponent } from './material/material.component';
       {path:'lastfm', component: LastfmComponent},
       {path:'leaflet', component: LeafletComponent},
       {path:'material', component: MaterialComponent},
+      {path:'translate', component: TranslateComponent},
     ])
   ],
   providers: [
