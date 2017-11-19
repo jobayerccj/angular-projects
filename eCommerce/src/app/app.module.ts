@@ -10,9 +10,9 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import {MatInputModule} from '@angular/material';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+//import {MatInputModule} from '@angular/material';
+//import {MatFormFieldModule} from '@angular/material/form-field';
+//import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { AgmCoreModule } from '@agm/core';
 import { ChartModule } from 'angular2-chartjs';
@@ -83,9 +83,9 @@ import { TranslateComponent } from './translate/translate.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatAutocompleteModule,
+    //MatInputModule,
+    //MatFormFieldModule,
+    //MatAutocompleteModule,
     LeafletModule.forRoot(),
     ShareModule,
     HttpModule,
