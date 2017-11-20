@@ -27,15 +27,13 @@ class Welcome extends CI_Controller {
 	{	
 		$this->load->model('users');
 		$data['members'] = $this->users->all_member();  
-		echo json_encode($data['members']);
-           
+		echo json_encode($data['members']); 
 	}
 
 	public function insert_member(){
 		$request_body = file_get_contents('php://input');
-		//echo json_encode('test');
-		echo $request_body;
-		//$this->load->model('users');
-		//$this->users->insert_member();  
+		$this->load->model('users');
+		$user_info = json_decode($request_body);
+		echo $this->users->insert_member($user_info);  
 	}
 }

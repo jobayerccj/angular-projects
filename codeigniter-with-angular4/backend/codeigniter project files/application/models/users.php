@@ -12,12 +12,12 @@ class Users extends CI_Model {
     
     function insert_member($data){ 
         
-        $new_data['name'] = $data['name'];
-        $new_data['email'] = $data['email'];
-        $new_data['phone'] = $data['phone'];
-        $new_data['image'] = $data['image'];
+        if($data){
+            $new_data['name'] = $data->name;
+            $this->db->insert('users', $new_data);
+            return $this->db->insert_id();
+        }
         
-        $this->db->insert('member', $new_data);
     }
     
     function all_member(){ 
