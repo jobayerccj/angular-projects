@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppUser } from './models/app.user';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
-//import 'rxjs/add/observable/of'; 
+import 'rxjs/add/observable/of'; 
 import { UserService } from './user.service';
 import * as firebase from 'firebase';
 
@@ -42,7 +42,7 @@ export class AuthService {
       return this.user$
       .switchMap(user => {
         if(user) return this.userService.get(user.uid);
-        //return Observable.of(null);
+        return Observable.of(null);
       });
 
   }
